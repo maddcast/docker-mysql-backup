@@ -27,6 +27,8 @@ services:
   mysql-backup:
     container_name: mysql-backup
     build: mysql-backup
+    depends_on:
+      - mysql
     links:
       - mysql
     volumes:
@@ -38,4 +40,5 @@ services:
       - MYSQL_PASSWORD=testpass
       - DAYS_TO_KEEP=3
       - COMPRESSION=GZ
+      - CRON_EXPRESSION=0 * * * *
     restart: always

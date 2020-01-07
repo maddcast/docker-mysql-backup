@@ -12,8 +12,7 @@ VOLUME /backup
 WORKDIR /app
 
 COPY mybackup.sh /app
-COPY save_env.sh /app
-COPY crontab /app
+COPY prepare.sh /app
 
 # Convert scripts from windows to unix
 RUN chmod +x /app/*.sh
@@ -23,8 +22,5 @@ RUN dos2unix /app/*
 RUN useradd -c 'MySQL backup user' -m -d /home/mybackup -s /bin/false mybackup
 RUN chown -R mybackup:mybackup /app
 
-# Apply cron jobs for user mybackup
-RUN crontab -u mybackup /app/crontab
-
 # Start cron service
-CMD /app/save_env.sh && cron -f
+CMD /app/prepare.sh && cron -f

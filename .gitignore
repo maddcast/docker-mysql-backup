@@ -1,0 +1,7 @@
+# IntelliJ IDEA files
+.idea
+*.iml
+
+# Dump files
+*.dump
+*.dump.gz
