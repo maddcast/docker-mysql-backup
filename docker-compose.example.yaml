@@ -40,5 +40,5 @@ services:
       - MYSQL_PASSWORD=testpass
       - DAYS_TO_KEEP=3
       - COMPRESSION=GZ
-      - CRON_EXPRESSION=0 * * * *
+      - CRON_EXPRESSION=0 1 * * *
     restart: always
